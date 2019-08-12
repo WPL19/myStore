@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css2/index.css">
+    <link rel="stylesheet" href="../fonts1/iconfont.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">PRODUCT ADMIN</div>
+        <div class="content">
+            <dl>
+                <dt class="iconfont icon-faxiandingdan"></dt>
+                <dd>Dashboard</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon-faxiandingdan"></dt>
+                <dd>Dashboard</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon-faxiandingdan"></dt>
+                <dd>Dashboard</dd>
+            </dl>
+            <dl class="active">
+                <dt class="iconfont icon-faxiandingdan"></dt>
+                <dd>Dashboard</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon-faxiandingdan"></dt>
+                <dd>Dashboard</dd>
+            </dl>
+        </div>
+        <div class="right"></div>
+    </header>
+    <section>
+        <div class="top">
+            <h1>欢迎来到仪表板，登录</h1>
+            <p>用户名</p>
+            <input type="text" id="username">
+            <p>用户名</p>
+            <input type="text" id="password">
+            <h2 id="login-btn">登录</h2>
+            <h2 id="register-btn">忘记密码了吗？</h2>
+        </div>
+        <div class="bottom">
+            <h1>Copyring @ 2019.Company name All rights reserved.
+                <span>网页模板</span>
+            </h1>
+        </div>
+    </section>
+</body>
+<script src="../js1/ajax.js"></script>
+<!-- <script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+    $('#register-btn').addEventListener('click', function () {
+        apost('/v1/api/register', {
+            username: 2,
+            password: 2
+        }, function (data) {
+            console.log(data)
+        })
+    });
+
+    $('#login-btn').addEventListener('click', function () {
+        apost('/v1/api/login', {
+            username: 2,
+            password: 2
+        }, function (data) {
+            console.log(data)
+            data = JSON.parse(data)
+            console.log(data)
+            if (data.status === 0) {
+                location.href = data.redirect;
+            } else {
+
+            }
+
+
+            localStorage.setItem('userid', JSON.parse(data).userid)
+        })
+    });
+</script> -->
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+    $('#register-btn').onclick = function () {
+        apost('/v1/api/register', {
+            username: username.value,
+            password: password.value
+        }, function (data) {
+            console.log(data)
+        })
+    }
+    $('#login-btn').onclick = function () {
+        apost('/v1/api/login', {
+            username: username.value,
+            password: password.value
+        }, (data) => {
+            console.log(data)
+            data = JSON.parse(data)
+            if(data.status === 0) {
+                location.href = data.redirect
+            }
+            localStorage.setItem('userid',data.userid)
+        })
+    }
+</script>
+
+</html>
